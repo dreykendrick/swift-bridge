@@ -11,16 +11,16 @@ const navItems = ["dashboard", "wallet", "bridge", "transactions", "analytics", 
 
 export const Header = ({ currentView, setCurrentView, mobileMenuOpen, setMobileMenuOpen }: HeaderProps) => (
   <header className="bg-background/95 backdrop-blur-2xl border-b border-primary/20 fixed top-0 left-0 right-0 z-50 shadow-glow-lg">
-    <div className="max-w-7xl mx-auto px-6 py-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
       <div className="flex justify-between items-center">
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentView("welcome")}>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-glow">
-            <Globe className="w-6 h-6 text-primary-foreground" />
+        <div className="flex items-center gap-2 sm:gap-3 cursor-pointer" onClick={() => setCurrentView("welcome")}>
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-glow">
+            <Globe className="w-4 h-4 sm:w-6 sm:h-6 text-primary-foreground" />
           </div>
-          <span className="text-2xl font-black text-foreground">NUMMO</span>
+          <span className="text-xl sm:text-2xl font-black text-foreground">NUMMO</span>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6">
           {navItems.map((v) => (
             <button
               key={v}
@@ -34,16 +34,16 @@ export const Header = ({ currentView, setCurrentView, mobileMenuOpen, setMobileM
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button
             onClick={() => setCurrentView("settings")}
-            className="w-10 h-10 rounded-xl bg-card/80 backdrop-blur-xl border border-primary/20 flex items-center justify-center hover:bg-primary/10 transition-all"
+            className="hidden sm:flex w-10 h-10 rounded-xl bg-card/80 backdrop-blur-xl border border-primary/20 items-center justify-center hover:bg-primary/10 transition-all"
           >
             <Settings className="w-5 h-5 text-muted-foreground" />
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden w-10 h-10 rounded-xl bg-card/80 backdrop-blur-xl border border-primary/20 flex items-center justify-center"
+            className="md:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-card/80 backdrop-blur-xl border border-primary/20 flex items-center justify-center active:scale-95"
           >
             {mobileMenuOpen ? <X className="w-5 h-5 text-foreground" /> : <Menu className="w-5 h-5 text-foreground" />}
           </button>
@@ -51,7 +51,7 @@ export const Header = ({ currentView, setCurrentView, mobileMenuOpen, setMobileM
       </div>
 
       {mobileMenuOpen && (
-        <nav className="md:hidden mt-4 pb-4 space-y-2">
+        <nav className="md:hidden mt-3 pb-2 space-y-1.5">
           {navItems.map((v) => (
             <button
               key={v}
@@ -59,7 +59,11 @@ export const Header = ({ currentView, setCurrentView, mobileMenuOpen, setMobileM
                 setCurrentView(v);
                 setMobileMenuOpen(false);
               }}
-              className="block w-full text-left px-4 py-3 text-foreground bg-card/80 backdrop-blur-xl rounded-xl hover:bg-primary/10 transition-all capitalize border border-primary/20"
+              className={`block w-full text-left px-4 py-3 rounded-lg transition-all capitalize text-sm font-medium active:scale-[0.98] ${
+                currentView === v
+                  ? "bg-primary/20 text-primary border border-primary/30"
+                  : "text-foreground bg-card/80 backdrop-blur-xl hover:bg-primary/10 border border-primary/20"
+              }`}
             >
               {v}
             </button>
