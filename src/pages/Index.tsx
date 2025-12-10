@@ -1,12 +1,44 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from "react";
+import { WelcomeScreen } from "./WelcomeScreen";
+import { OnboardingFlow } from "./OnboardingFlow";
+import { Dashboard } from "./Dashboard";
+import { BridgeEngine } from "./BridgeEngine";
+import { WalletView } from "./WalletView";
+import { TransactionsView } from "./TransactionsView";
+import { AnalyticsView } from "./AnalyticsView";
+import { AdminPanel } from "./AdminPanel";
+import { SettingsView } from "./SettingsView";
+import { User, mockUser } from "@/lib/mockData";
 
 const Index = () => {
+  const [currentView, setCurrentView] = useState("welcome");
+  const [user, setUser] = useState<User | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (currentView === "dashboard" && !user) {
+      setUser(mockUser);
+    }
+  }, [currentView, user]);
+
+  const commonProps = {
+    currentView,
+    setCurrentView,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="font-sans antialiased">
+      {currentView === "welcome" && <WelcomeScreen setCurrentView={setCurrentView} setUser={setUser} />}
+      {currentView === "onboarding" && <OnboardingFlow setCurrentView={setCurrentView} setUser={setUser} />}
+      {currentView === "dashboard" && <Dashboard user={user} {...commonProps} />}
+      {currentView === "bridge" && <BridgeEngine user={user} {...commonProps} />}
+      {currentView === "wallet" && <WalletView user={user} {...commonProps} />}
+      {currentView === "transactions" && <TransactionsView {...commonProps} />}
+      {currentView === "analytics" && <AnalyticsView {...commonProps} />}
+      {currentView === "admin" && <AdminPanel {...commonProps} />}
+      {currentView === "settings" && <SettingsView user={user} {...commonProps} />}
     </div>
   );
 };
