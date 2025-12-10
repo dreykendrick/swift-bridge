@@ -46,9 +46,9 @@ export const Dashboard = ({ user, currentView, setCurrentView, mobileMenuOpen, s
         setMobileMenuOpen={setMobileMenuOpen}
       />
 
-      <div className="max-w-7xl mx-auto p-6 pt-28 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 pb-6 relative z-10">
         {/* Balance Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
           {[
             {
               title: "Total Fiat Balance",
@@ -70,30 +70,30 @@ export const Dashboard = ({ user, currentView, setCurrentView, mobileMenuOpen, s
               ],
             },
           ].map((bal, i) => (
-            <GlassCard key={i} className="p-8 group">
-              <div className="flex justify-between items-start mb-6">
+            <GlassCard key={i} className="p-4 sm:p-8 group">
+              <div className="flex justify-between items-start mb-4 sm:mb-6">
                 <div>
-                  <p className="text-muted-foreground text-sm mb-3 font-medium">{bal.title}</p>
-                  <div className="flex items-center gap-3">
-                    <h2 className="text-4xl font-black text-foreground">{showBalance ? bal.amount : "••••••"}</h2>
+                  <p className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 font-medium">{bal.title}</p>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <h2 className="text-2xl sm:text-4xl font-black text-foreground">{showBalance ? bal.amount : "••••••"}</h2>
                     <button onClick={() => setShowBalance(!showBalance)} className="hover:scale-110 transition-transform">
                       {showBalance ? (
-                        <EyeOff className="w-6 h-6 text-muted-foreground" />
+                        <EyeOff className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
                       ) : (
-                        <Eye className="w-6 h-6 text-muted-foreground" />
+                        <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
                       )}
                     </button>
                   </div>
                 </div>
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20">
-                  <bal.icon className="w-7 h-7 text-primary" />
+                <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                  <bal.icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
                 </div>
               </div>
-              <div className="flex gap-6 pt-4 border-t border-primary/10">
+              <div className="flex gap-4 sm:gap-6 pt-3 sm:pt-4 border-t border-primary/10">
                 {bal.extras.map(([k, v], j) => (
                   <div key={j}>
-                    <p className="text-muted-foreground text-sm mb-1">{k}</p>
-                    <p className="text-foreground font-bold text-lg">{showBalance ? v : "••"}</p>
+                    <p className="text-muted-foreground text-xs sm:text-sm mb-1">{k}</p>
+                    <p className="text-foreground font-bold text-sm sm:text-lg">{showBalance ? v : "••"}</p>
                   </div>
                 ))}
               </div>
@@ -102,47 +102,47 @@ export const Dashboard = ({ user, currentView, setCurrentView, mobileMenuOpen, s
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-4 gap-2 sm:gap-4 mb-6 sm:mb-8">
           {actions.map((a, i) => (
             <button
               key={i}
               onClick={a.action}
-              className="bg-card/60 backdrop-blur-2xl border border-primary/20 rounded-2xl p-6 hover:bg-primary/10 hover:border-primary/60 transition-all hover:-translate-y-1 shadow-glow-lg"
+              className="bg-card/60 backdrop-blur-2xl border border-primary/20 rounded-xl sm:rounded-2xl p-3 sm:p-6 hover:bg-primary/10 hover:border-primary/60 transition-all hover:-translate-y-1 active:scale-95 shadow-glow-lg"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3 border border-primary/20">
-                <a.icon className="w-6 h-6 text-primary" />
+              <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-2 sm:mb-3 border border-primary/20">
+                <a.icon className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
               </div>
-              <p className="text-foreground font-semibold">{a.label}</p>
+              <p className="text-foreground font-semibold text-xs sm:text-base">{a.label}</p>
             </button>
           ))}
         </div>
 
         {/* Exchange Rates */}
-        <GlassCard className="p-8 mb-8">
-          <h3 className="text-foreground text-xl font-bold mb-6 flex items-center gap-2">
-            <TrendingUp className="w-6 h-6 text-primary" />
+        <GlassCard className="p-4 sm:p-8 mb-6 sm:mb-8">
+          <h3 className="text-foreground text-base sm:text-xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+            <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
             Live Exchange Rates
           </h3>
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
             {Object.entries(exchangeRates).map(([pair, rate]) => (
-              <div key={pair} className="bg-background backdrop-blur-xl rounded-xl p-4 border border-primary/20">
-                <p className="text-muted-foreground text-sm mb-1">{pair}</p>
-                <p className="text-foreground text-xl font-bold mb-1">{rate.toLocaleString()}</p>
-                <p className="text-success text-sm">+2.3%</p>
+              <div key={pair} className="bg-background backdrop-blur-xl rounded-lg sm:rounded-xl p-3 sm:p-4 border border-primary/20">
+                <p className="text-muted-foreground text-xs sm:text-sm mb-1">{pair}</p>
+                <p className="text-foreground text-base sm:text-xl font-bold mb-1">{rate.toLocaleString()}</p>
+                <p className="text-success text-xs sm:text-sm">+2.3%</p>
               </div>
             ))}
           </div>
         </GlassCard>
 
         {/* Recent Transactions */}
-        <GlassCard className="p-8">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-foreground text-xl font-bold">Recent Transactions</h3>
-            <button onClick={() => setCurrentView("transactions")} className="text-primary hover:underline font-semibold">
+        <GlassCard className="p-4 sm:p-8">
+          <div className="flex justify-between items-center mb-4 sm:mb-6">
+            <h3 className="text-foreground text-base sm:text-xl font-bold">Recent Transactions</h3>
+            <button onClick={() => setCurrentView("transactions")} className="text-primary hover:underline font-semibold text-sm sm:text-base">
               View All
             </button>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {mockTransactions.map((tx) => (
               <TransactionRow key={tx.id} tx={tx} />
             ))}
@@ -154,38 +154,38 @@ export const Dashboard = ({ user, currentView, setCurrentView, mobileMenuOpen, s
 };
 
 const TransactionRow = ({ tx }: { tx: Transaction }) => (
-  <div className="bg-background backdrop-blur-xl rounded-xl p-5 border border-primary/20 hover:border-primary/40 transition-all cursor-pointer">
-    <div className="flex justify-between items-center">
-      <div className="flex items-center gap-3">
+  <div className="bg-background backdrop-blur-xl rounded-lg sm:rounded-xl p-3 sm:p-5 border border-primary/20 hover:border-primary/40 transition-all cursor-pointer active:scale-[0.98]">
+    <div className="flex justify-between items-center gap-2">
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
         <div
-          className={`w-10 h-10 rounded-full flex items-center justify-center ${
+          className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
             tx.status === "complete" ? "bg-success/20" : "bg-warning/20"
           }`}
         >
           {tx.type.includes("to-fiat") ? (
-            <ArrowDownLeft className="w-5 h-5 text-success" />
+            <ArrowDownLeft className="w-4 h-4 sm:w-5 sm:h-5 text-success" />
           ) : (
-            <ArrowUpRight className="w-5 h-5 text-primary" />
+            <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
           )}
         </div>
-        <div>
-          <p className="text-foreground font-semibold">
+        <div className="min-w-0">
+          <p className="text-foreground font-semibold text-sm sm:text-base truncate">
             {tx.from} → {tx.to}
           </p>
-          <p className="text-muted-foreground text-sm">{tx.date}</p>
+          <p className="text-muted-foreground text-xs sm:text-sm">{tx.date}</p>
         </div>
       </div>
-      <div className="text-right">
-        <p className="text-foreground font-bold">
+      <div className="text-right flex-shrink-0">
+        <p className="text-foreground font-bold text-sm sm:text-base">
           {tx.amount} {tx.from}
         </p>
         <div className="flex items-center gap-1 justify-end">
           {tx.status === "complete" ? (
-            <CheckCircle className="w-4 h-4 text-success" />
+            <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-success" />
           ) : (
-            <Clock className="w-4 h-4 text-warning" />
+            <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-warning" />
           )}
-          <p className={`text-sm capitalize ${tx.status === "complete" ? "text-success" : "text-warning"}`}>{tx.status}</p>
+          <p className={`text-xs sm:text-sm capitalize ${tx.status === "complete" ? "text-success" : "text-warning"}`}>{tx.status}</p>
         </div>
       </div>
     </div>
