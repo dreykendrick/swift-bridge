@@ -6,7 +6,6 @@ import { BridgeEngine } from "./BridgeEngine";
 import { WalletView } from "./WalletView";
 import { TransactionsView } from "./TransactionsView";
 import { AnalyticsView } from "./AnalyticsView";
-import { AdminPanel } from "./AdminPanel";
 import { SettingsView } from "./SettingsView";
 import { User, mockUser } from "@/lib/mockData";
 
@@ -37,7 +36,6 @@ const Index = () => {
       {currentView === "wallet" && <WalletView user={user} {...commonProps} />}
       {currentView === "transactions" && <TransactionsView {...commonProps} />}
       {currentView === "analytics" && <AnalyticsView {...commonProps} />}
-      {currentView === "admin" && <AdminPanel {...commonProps} />}
       {currentView === "settings" && <SettingsView user={user} {...commonProps} />}
     </div>
   );

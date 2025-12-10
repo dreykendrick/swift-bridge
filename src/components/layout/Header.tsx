@@ -7,7 +7,7 @@ interface HeaderProps {
   setMobileMenuOpen: (open: boolean) => void;
 }
 
-const navItems = ["dashboard", "wallet", "bridge", "transactions", "analytics", "admin", "settings"];
+const navItems = ["dashboard", "wallet", "bridge", "transactions", "analytics", "settings"];
 
 export const Header = ({ currentView, setCurrentView, mobileMenuOpen, setMobileMenuOpen }: HeaderProps) => (
   <header className="bg-background/95 backdrop-blur-2xl border-b border-primary/20 fixed top-0 left-0 right-0 z-50 shadow-glow-lg">
