@@ -10,7 +10,7 @@ interface HeaderProps {
 const navItems = ["dashboard", "wallet", "bridge", "transactions", "analytics", "settings"];
 
 export const Header = ({ currentView, setCurrentView, mobileMenuOpen, setMobileMenuOpen }: HeaderProps) => (
-  <header className="bg-background/95 backdrop-blur-2xl border-b border-primary/20 fixed top-0 left-0 right-0 z-50 shadow-glow-lg">
+  <header className="bg-card/95 backdrop-blur-2xl border-b border-border fixed top-0 left-0 right-0 z-50 shadow-sm">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2 sm:gap-3 cursor-pointer" onClick={() => setCurrentView("welcome")}>
@@ -37,13 +37,13 @@ export const Header = ({ currentView, setCurrentView, mobileMenuOpen, setMobileM
         <div className="flex items-center gap-2 sm:gap-4">
           <button
             onClick={() => setCurrentView("settings")}
-            className="hidden sm:flex w-10 h-10 rounded-xl bg-card/80 backdrop-blur-xl border border-primary/20 items-center justify-center hover:bg-primary/10 transition-all"
+            className="hidden sm:flex w-10 h-10 rounded-xl bg-secondary border border-border items-center justify-center hover:bg-primary/10 transition-all"
           >
             <Settings className="w-5 h-5 text-muted-foreground" />
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-card/80 backdrop-blur-xl border border-primary/20 flex items-center justify-center active:scale-95"
+            className="md:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-secondary border border-border flex items-center justify-center active:scale-95"
           >
             {mobileMenuOpen ? <X className="w-5 h-5 text-foreground" /> : <Menu className="w-5 h-5 text-foreground" />}
           </button>
@@ -61,8 +61,8 @@ export const Header = ({ currentView, setCurrentView, mobileMenuOpen, setMobileM
               }}
               className={`block w-full text-left px-4 py-3 rounded-lg transition-all capitalize text-sm font-medium active:scale-[0.98] ${
                 currentView === v
-                  ? "bg-primary/20 text-primary border border-primary/30"
-                  : "text-foreground bg-card/80 backdrop-blur-xl hover:bg-primary/10 border border-primary/20"
+                  ? "bg-primary/10 text-primary border border-primary/30"
+                  : "text-foreground bg-secondary hover:bg-primary/5 border border-border"
               }`}
             >
               {v}

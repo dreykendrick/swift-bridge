@@ -10,8 +10,8 @@ interface GlassCardProps {
 export const GlassCard = ({ children, className = "", hover = true }: GlassCardProps) => (
   <div
     className={cn(
-      "bg-card/60 backdrop-blur-2xl border border-primary/30 rounded-3xl shadow-glow-lg",
-      hover && "hover:border-primary/60 hover:-translate-y-1 transition-all duration-300",
+      "bg-card backdrop-blur-xl border border-border rounded-3xl shadow-lg",
+      hover && "hover:border-primary/40 hover:-translate-y-1 hover:shadow-xl transition-all duration-300",
       className
     )}
   >
