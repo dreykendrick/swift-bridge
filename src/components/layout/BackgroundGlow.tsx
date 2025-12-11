@@ -16,10 +16,10 @@ export const BackgroundGlow = ({ position = "top-right", animate = true, delay }
   };
 
   return (
-    <div className="absolute inset-0 opacity-20 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 opacity-10 overflow-hidden pointer-events-none">
       <div
         className={cn(
-          "absolute w-96 h-96 bg-primary rounded-full blur-glow",
+          "absolute w-96 h-96 bg-primary/30 rounded-full blur-glow",
           positionClasses[position],
           animate && "animate-pulse-glow"
         )}
