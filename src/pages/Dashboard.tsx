@@ -12,6 +12,8 @@ import {
   EyeOff,
   CheckCircle,
   Clock,
+  PiggyBank,
+  Sparkles,
 } from "lucide-react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { BackgroundGlow } from "@/components/layout/BackgroundGlow";
@@ -30,10 +32,10 @@ export const Dashboard = ({ user, currentView, setCurrentView, mobileMenuOpen, s
   const [showBalance, setShowBalance] = useState(true);
 
   const actions = [
-    { icon: Send, label: "Send", action: () => setCurrentView("bridge") },
+    { icon: Send, label: "Send", action: () => setCurrentView("send") },
     { icon: Download, label: "Receive", action: () => setCurrentView("wallet") },
-    { icon: RefreshCw, label: "Bridge", action: () => setCurrentView("bridge") },
-    { icon: TrendingUp, label: "Analytics", action: () => setCurrentView("analytics") },
+    { icon: RefreshCw, label: "Convert", action: () => setCurrentView("bridge") },
+    { icon: PiggyBank, label: "Savings", action: () => setCurrentView("savings") },
   ];
 
   return (
@@ -116,6 +118,33 @@ export const Dashboard = ({ user, currentView, setCurrentView, mobileMenuOpen, s
             </button>
           ))}
         </div>
+
+        {/* Microsavings Banner */}
+        <GlassCard className="p-4 sm:p-6 mb-6 sm:mb-8 bg-gradient-to-r from-success/5 to-primary/5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center">
+                <Sparkles className="w-6 h-6 text-success" />
+              </div>
+              <div>
+                <h3 className="text-foreground font-bold text-base sm:text-lg">Microsavings Active</h3>
+                <p className="text-muted-foreground text-sm">Earning 5.2% APY on $450 deposited</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                <p className="text-success font-bold text-lg sm:text-xl">+$18.75</p>
+                <p className="text-muted-foreground text-xs">Total earned</p>
+              </div>
+              <button
+                onClick={() => setCurrentView("savings")}
+                className="px-4 py-2 bg-success/20 text-success rounded-lg font-semibold hover:bg-success/30 transition-all text-sm"
+              >
+                View Savings
+              </button>
+            </div>
+          </div>
+        </GlassCard>
 
         {/* Exchange Rates */}
         <GlassCard className="p-4 sm:p-8 mb-6 sm:mb-8">

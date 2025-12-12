@@ -1,4 +1,4 @@
-import { Globe, Zap, Shield, DollarSign } from "lucide-react";
+import { Globe, Zap, Shield, DollarSign, Users, Building2, PiggyBank, ArrowRightLeft } from "lucide-react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { BackgroundGlow } from "@/components/layout/BackgroundGlow";
 import { User, mockUser } from "@/lib/mockData";
@@ -9,9 +9,17 @@ interface WelcomeScreenProps {
 }
 
 const features = [
-  { icon: Zap, title: "Instant Bridge", desc: "Convert crypto to mobile money in seconds" },
-  { icon: Shield, title: "Fully Compliant", desc: "KYC/AML ready, regulated & secure" },
-  { icon: DollarSign, title: "Low Fees", desc: "90% cheaper than traditional remittance" },
+  { icon: ArrowRightLeft, title: "Hybrid Bridge", desc: "DeFi speed meets CeFi trust — seamless routing" },
+  { icon: Shield, title: "Fully Licensed", desc: "KYC/AML compliant across African markets" },
+  { icon: DollarSign, title: "<1% Fees", desc: "80% cheaper than traditional remittance" },
+  { icon: PiggyBank, title: "Microsavings", desc: "Earn 4-8% APY on idle funds via DeFi" },
+];
+
+const flows = [
+  { icon: Users, label: "P2P", desc: "Person-to-Person" },
+  { icon: Building2, label: "B2B", desc: "Business Payments" },
+  { icon: DollarSign, label: "B2P", desc: "Salary Payouts" },
+  { icon: Zap, label: "P2B", desc: "Bills & Commerce" },
 ];
 
 export const WelcomeScreen = ({ setCurrentView, setUser }: WelcomeScreenProps) => (
@@ -19,8 +27,8 @@ export const WelcomeScreen = ({ setCurrentView, setUser }: WelcomeScreenProps) =
     <BackgroundGlow position="top-left" />
     <BackgroundGlow position="bottom-right" delay="1s" />
 
-    <div className="max-w-4xl w-full relative z-10">
-      <div className="text-center mb-8 sm:mb-12">
+    <div className="max-w-5xl w-full relative z-10">
+      <div className="text-center mb-8 sm:mb-10">
         <div className="inline-block mb-6 sm:mb-8 relative">
           <div className="absolute inset-0 bg-primary blur-xl opacity-60 animate-pulse-glow" />
           <div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-2xl sm:rounded-3xl bg-background border-2 border-primary shadow-glow-xl flex items-center justify-center">
@@ -33,22 +41,36 @@ export const WelcomeScreen = ({ setCurrentView, setUser }: WelcomeScreenProps) =
         </h1>
 
         <div className="inline-block mb-3 sm:mb-4 px-4 sm:px-6 py-2 rounded-full bg-primary/10 backdrop-blur-xl border border-primary/30">
-          <p className="text-base sm:text-xl text-primary font-semibold">Africa's First DeFi ↔ CeFi Bridge</p>
+          <p className="text-base sm:text-xl text-primary font-semibold">Africa's Payment Infrastructure</p>
         </div>
 
         <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto px-2">
-          Instant, secure transfers between traditional finance and decentralized wallets
+          Move money anywhere, anyhow — in and out of Africa. Bridging DeFi and CeFi for instant, low-cost transactions.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
-        {features.map((f, i) => (
-          <GlassCard key={i} className="p-5 sm:p-8 group">
-            <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-xl sm:rounded-2xl bg-primary/10 flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
-              <f.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
+      {/* Transaction Flow Types */}
+      <div className="flex justify-center gap-3 sm:gap-6 mb-6 sm:mb-8 flex-wrap">
+        {flows.map((flow, i) => (
+          <div key={i} className="flex flex-col items-center">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-2">
+              <flow.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
             </div>
-            <h3 className="text-foreground text-lg sm:text-xl font-bold mb-2 sm:mb-3">{f.title}</h3>
-            <p className="text-muted-foreground text-sm sm:text-base">{f.desc}</p>
+            <p className="text-foreground font-bold text-sm sm:text-base">{flow.label}</p>
+            <p className="text-muted-foreground text-xs">{flow.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Features Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
+        {features.map((f, i) => (
+          <GlassCard key={i} className="p-4 sm:p-6 group">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+              <f.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+            </div>
+            <h3 className="text-foreground text-sm sm:text-base font-bold mb-1">{f.title}</h3>
+            <p className="text-muted-foreground text-xs sm:text-sm">{f.desc}</p>
           </GlassCard>
         ))}
       </div>

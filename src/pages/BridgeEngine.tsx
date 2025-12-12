@@ -33,8 +33,8 @@ export const BridgeEngine = ({ user, currentView, setCurrentView, mobileMenuOpen
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 pb-6 relative z-10">
         <div className="text-center mb-6 sm:mb-8">
-          <h2 className="text-2xl sm:text-4xl font-black text-foreground mb-2">DeFi ↔ CeFi Bridge</h2>
-          <p className="text-muted-foreground text-sm sm:text-lg">Convert between crypto and traditional finance instantly</p>
+          <h2 className="text-2xl sm:text-4xl font-black text-foreground mb-2">Currency Converter</h2>
+          <p className="text-muted-foreground text-sm sm:text-lg">Convert between crypto, fiat, and mobile money instantly</p>
         </div>
 
         <GlassCard className="p-4 sm:p-8" hover={false}>
