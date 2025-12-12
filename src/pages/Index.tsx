@@ -5,8 +5,9 @@ import { Dashboard } from "./Dashboard";
 import { BridgeEngine } from "./BridgeEngine";
 import { WalletView } from "./WalletView";
 import { TransactionsView } from "./TransactionsView";
-import { AnalyticsView } from "./AnalyticsView";
 import { SettingsView } from "./SettingsView";
+import { SendMoney } from "./SendMoney";
+import { MicrosavingsView } from "./MicrosavingsView";
 import { User, mockUser } from "@/lib/mockData";
 
 const Index = () => {
@@ -32,10 +33,11 @@ const Index = () => {
       {currentView === "welcome" && <WelcomeScreen setCurrentView={setCurrentView} setUser={setUser} />}
       {currentView === "onboarding" && <OnboardingFlow setCurrentView={setCurrentView} setUser={setUser} />}
       {currentView === "dashboard" && <Dashboard user={user} {...commonProps} />}
+      {currentView === "send" && <SendMoney user={user} {...commonProps} />}
       {currentView === "bridge" && <BridgeEngine user={user} {...commonProps} />}
       {currentView === "wallet" && <WalletView user={user} {...commonProps} />}
       {currentView === "transactions" && <TransactionsView {...commonProps} />}
-      {currentView === "analytics" && <AnalyticsView {...commonProps} />}
+      {currentView === "savings" && <MicrosavingsView user={user} {...commonProps} />}
       {currentView === "settings" && <SettingsView user={user} {...commonProps} />}
     </div>
   );
